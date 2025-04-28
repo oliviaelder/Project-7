@@ -16,7 +16,7 @@ jobs:
       - name: Unzip Files
         run: |
           mkdir -p unzipped_files
-          unzip -q /path/to/your/zipfile.zip -d unzipped_files
+          unzip -q zipfile.zip -d unzipped_files
 
       - name: Configure git for commit
         run: |
