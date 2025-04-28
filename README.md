@@ -1,4 +1,4 @@
-# clientsidedemo
+# Project 7: Flower Shop
 
 ![screenshot](/public/screenshot.png)
 
