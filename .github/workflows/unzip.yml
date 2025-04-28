@@ -1,27 +1,36 @@
-name: Unzip Files and Push
+name: Unzip Files
 
 on:
   push:
     branches:
-      - main  # Adjust to your main branch if it's different
+      - main
 
 jobs:
-  unzip-and-commit:
+  unzip_files:
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2  # This ensures the repo is correctly checked out
-    
-    - name: Unzip files
-      run: |
-        mkdir -p ./unzipped_files
-        unzip '*.zip' -d ./unzipped_files/
 
-    - name: Add, commit, and push unzipped files
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add .  # Add unzipped files
-        git commit -m "Unzipped files" || echo "No changes to commit"  # If no changes, continue
-        git push
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Unzip Files
+        run: |
+          mkdir -p unzipped_files
+          unzip -q /path/to/your/zipfile.zip -d unzipped_files
+
+      - name: Configure git for commit
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Add and commit changes
+        run: |
+          git add unzipped_files/
+          git commit -m "Unzipped new files"
+
+      - name: Push changes to repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/oliviaelder/Project-7.git
+          git push origin main
