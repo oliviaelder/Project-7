@@ -1,28 +1,27 @@
-name: Unzip Files
+name: Unzip Files and Push
 
 on:
   push:
-    paths:
-      - "*.zip"  # This triggers the action when a ZIP file is pushed
+    branches:
+      - main  # Adjust to your main branch if it's different
 
 jobs:
-  unzip:
+  unzip-and-commit:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2  # This ensures the repo is correctly checked out
+    
+    - name: Unzip files
+      run: |
+        mkdir -p ./unzipped_files
+        unzip '*.zip' -d ./unzipped_files/
 
-      - name: Unzip the file
-        run: |
-          mkdir -p extracted
-          unzip "*.zip" -d extracted/  # Unzips the files to an "extracted" folder
-          mv extracted/* ./  # Moves the unzipped contents to the root of the repository
-          rm -rf extracted  # Cleans up the extracted folder
-      
-      - name: Commit unzipped files
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Unzipped files"
-          git push
+    - name: Add, commit, and push unzipped files
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add .  # Add unzipped files
+        git commit -m "Unzipped files" || echo "No changes to commit"  # If no changes, continue
+        git push
