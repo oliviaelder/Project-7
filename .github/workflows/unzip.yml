@@ -15,9 +15,9 @@ jobs:
 
       - name: Unzip Files
         run: |
-          # Make sure to specify the correct path to the zipfile
           mkdir -p unzipped_files
-          unzip -q ./zipfile.zip -d unzipped_files  # Update this with the correct file name and path
+          # Change the path and file name to match the actual file in the repo
+          unzip -q "Task 1.zip" -d unzipped_files
 
       - name: Configure git for commit
         run: |
