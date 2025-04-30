@@ -1,10 +1,14 @@
 # Project 7: Flower Shop
-Challenge: Design a web application for a flower shop.
+Challenge: Design a user-friendly, desktop-style web application for a local flower shop to manage inventory, process orders, and track customer information—all within a single-page experience.
 
-Context: I developed a Java application to help a flower shop manage its products, orders, and customer information. The focus was on building a desktop-style program using object-oriented programming and Java collections.
+Context: I developed a React-based Single Page Application (SPA) that simulates a desktop program using multiple views and a clean navigation structure. The application allows staff to manage flowers, 
+customer data, and orders seamlessly without page reloads. Emphasis was placed on data integrity and a responsive user interface using JavaScript for logic and validation.
 
-Action: I created Java classes for Flower, Customer, and Order. I used ArrayLists to store and manage orders and inventory. The program allowed adding, editing, and deleting flowers, placing new orders, and calculating total costs. I used basic file handling to save and load order data.
+Action: I built modular views using HTML, CSS, and React components. I applied object-oriented principles to define Flower, Customer, and Order classes. I used JavaScript arrays (analogous to Java’s ArrayLists) 
+to dynamically store and manage flower inventory and order records. The application supports adding, editing, and deleting inventory items, placing new orders, and calculating total costs at checkout. 
 
-Results: The biggest challenge was managing data relationships and keeping inventory updated with each new order. Once I implemented proper methods and data validation, everything ran smoothly.
+Results: One of the biggest challenges was making sure the inventory stayed accurate as new orders were placed. Once I set up the right methods and added input validation, the app worked smoothly and kept everything in sync.
 
-Refelction: This project helped me apply core Java concepts like classes, objects, file I/O, and exception handling in a real-world scenario. It gave me a better understanding of how a simple POS (Point of Sale) system could be built from scratch.
+Reflection: This project helped me practice important programming skills like working with classes, objects, file saving/loading, and handling errors. It also gave me a better understanding of 
+how a simple point-of-sale system can be built and used in a real-world setting.
+
